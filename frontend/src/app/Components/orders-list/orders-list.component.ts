@@ -48,10 +48,8 @@ export class OrdersListComponent implements OnInit {
 
 
   getOrderInfo(orderId:any){
-
     this.storage.setOrderId(orderId)
     this.route.navigate(['orderInfo'])
-
   }
 
 

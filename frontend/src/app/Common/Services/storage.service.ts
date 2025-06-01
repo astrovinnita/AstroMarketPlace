@@ -1,14 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { BehaviorSubject, map, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  constructor(private http:HttpClient,@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   getToken(): any {        
 
@@ -19,7 +19,9 @@ export class StorageService {
   }
 
   setToken(token:any) {
-    localStorage.setItem("token", token)
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem("token", token)
+    }
   }
 
   private fillterSubject = new BehaviorSubject({});

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { FormRecord, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormRecord, FormsModule } from '@angular/forms';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { MatListModule, MatSelectionListChange } from "@angular/material/list";
+import { MatListModule } from "@angular/material/list";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatButtonModule } from '@angular/material/button';
 

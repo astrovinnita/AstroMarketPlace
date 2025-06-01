@@ -16,7 +16,6 @@ mat-card{
 .card_description {
     display: -webkit-box;
     -webkit-line-clamp: 1;
-    /* Limit the number of lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-size: small;

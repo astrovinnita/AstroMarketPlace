@@ -1,4 +1,4 @@
-import { Component, Inject, Optional, inject } from '@angular/core';
+import { Component, Inject, Optional, PLATFORM_ID, inject } from '@angular/core';
 import { RestURL } from '../../Common/Constant/RestURL';
 import { StorageService } from '../../Common/Services/storage.service';
 import { take } from 'rxjs';
@@ -6,7 +6,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
@@ -35,7 +35,7 @@ export class CartComponent {
   private apiServices = inject(ApiService)
   private rout = inject(Router)
 
-  constructor(@Optional() @Inject(MatBottomSheetRef) private bottomSheetRef: MatBottomSheetRef<CartComponent>) { }
+  constructor(@Optional() @Inject(MatBottomSheetRef) private bottomSheetRef: MatBottomSheetRef<CartComponent>, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
     this.addProducts()
@@ -125,7 +125,10 @@ export class CartComponent {
   }
 
   placeOrder() {
-    localStorage.setItem("orderProduct", JSON.stringify(this.cartProduct))
+    
+    if(isPlatformBrowser(this.platformId))
+      localStorage.setItem("orderProduct", JSON.stringify(this.cartProduct))
+
     this.rout.navigate(['checkout'])
     this.bottomSheetRef.dismiss();
   }

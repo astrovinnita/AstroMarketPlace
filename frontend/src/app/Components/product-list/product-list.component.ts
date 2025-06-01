@@ -3,7 +3,7 @@ import { ApiService } from '../../Common/Services/Backend/api.service';
 import { StorageService } from '../../Common/Services/storage.service';
 import { RestURL } from '../../Common/Constant/RestURL';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { UpperCasePipe,CurrencyPipe,PercentPipe, NgOptimizedImage, DecimalPipe } from '@angular/common';
+import { UpperCasePipe,PercentPipe, NgOptimizedImage, DecimalPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FillterNavBarComponent } from '../NavBar/fillter-nav-bar/fillter-nav-bar.component';
 

@@ -27,13 +27,6 @@ nav{
   @media (min-width:700px) {
     nav{
         display: none;
-        /* bottom: 3rem;
-        justify-content: center; */
     }
-  
-    /* .nav-container{
-        width: 30%;
-        border-radius: 1rem;
-    } */
   
   }

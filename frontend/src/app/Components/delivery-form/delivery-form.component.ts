@@ -1,17 +1,17 @@
-import { Component, inject, NgZone } from '@angular/core';
+import { Component, Inject, inject, NgZone, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../Common/Services/Backend/api.service';
 import { StorageService } from '../../Common/Services/storage.service';
-import { Observable, map, startWith, take } from 'rxjs';
+import { Observable, map, startWith } from 'rxjs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SnackBarService } from '../../Common/Services/Ui/snack-bar.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Router } from '@angular/router';
 
 declare var Razorpay: any
 @Component({
@@ -65,7 +65,7 @@ export class DeliveryFormComponent {
 
   mobilePattern = /^[789]\d{9}$/
 
-  constructor(private formBuilder: FormBuilder,private ngZone: NgZone, private apiServices: ApiService, private rout:Router, private activeRout:ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder,private ngZone: NgZone, private apiServices: ApiService, private rout:Router, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   private storage = inject(StorageService)
   private snackBar = inject(SnackBarService)
@@ -99,7 +99,8 @@ export class DeliveryFormComponent {
 
     this.filteredOptions = this.orderAddress.get('address')?.get('state')?.valueChanges.pipe(startWith(''), map(value => this._filter(value || '')))
 
-    this.orders = localStorage.getItem("orderProduct") 
+    if(isPlatformBrowser(this.platformId))
+      this.orders = localStorage.getItem("orderProduct") 
     
     if(this.rout.url == '/addAddress'){
       this.storage.getDeliveryInfo().subscribe((res:any)=>{

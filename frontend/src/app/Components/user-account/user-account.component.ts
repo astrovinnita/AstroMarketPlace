@@ -1,14 +1,12 @@
-import { Component, OnInit, ViewChild, inject, viewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule, MatDrawerContainer, MatDrawer } from "@angular/material/sidenav";
+import { MatDrawer } from "@angular/material/sidenav";
 import { SnackBarService } from '../../Common/Services/Ui/snack-bar.service';
 import { ApiService } from '../../Common/Services/Backend/api.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {Router, RouterLink } from '@angular/router';
 import { StorageService } from '../../Common/Services/storage.service';
 import { take } from 'rxjs';
-import { Location } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -34,13 +32,6 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
-
-    // this.breakpointObserver.observe(['(max-width: 700px)']).subscribe(result => {
-    //   if(this.rout.url=='user' && !result.matches)
-    //     this.rout.navigate(['home'])      
-
-    // });
-
     this.deawerTogle()
 
   }
@@ -87,12 +78,6 @@ export class UserAccountComponent implements OnInit {
       this.snackBar.successSnackBar(`Welcome ${res?.userName}`)
     })
   }
-
-  // getUserInfo() {
-  //   this.storage.getUser().pipe(take(1)).subscribe((res: any) => {
-  //    if (this.storage.getToken()) this.getUser()
-  //   })
-  // }
 
   deawerTogle() {
     this.storage.getSideNavtoggle().subscribe((res: any) => {

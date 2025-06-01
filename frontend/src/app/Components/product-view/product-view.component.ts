@@ -1,18 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild, inject } from '@angular/core';
 import { ApiService } from '../../Common/Services/Backend/api.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MatBottomSheet, MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { StorageService } from '../../Common/Services/storage.service';
 import { RestURL } from '../../Common/Constant/RestURL';
 import { take } from 'rxjs';
-import { CurrencyPipe, NgOptimizedImage, PercentPipe, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, isPlatformBrowser, PercentPipe} from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { CartComponent } from '../cart/cart.component';
-import { signalSetFn } from '@angular/core/primitives/signals';
 import { SnackBarService } from '../../Common/Services/Ui/snack-bar.service';
-import { isNumberObject } from 'node:util/types';
-import { _isNumberValue } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-product-view',
@@ -23,7 +19,7 @@ import { _isNumberValue } from '@angular/cdk/coercion';
 })
 export class ProductViewComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private _bottomSheet: MatBottomSheet) { }
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   storage: any = inject(StorageService)
   snackBar: any = inject(SnackBarService)
@@ -95,11 +91,9 @@ export class ProductViewComponent implements OnInit {
   }
 
   placeOrder(product: any) {
-    localStorage.setItem("orderProduct", JSON.stringify({ [product.productId]: 1 }))
+    if(isPlatformBrowser(this.platformId))
+      localStorage.setItem("orderProduct", JSON.stringify({ [product.productId]: 1 }))
     this.storage.setPrice(product.productSellingPrice)
   }
-
-
-
 
 }
