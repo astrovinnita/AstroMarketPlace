@@ -1,0 +1,85 @@
+h1 {
+  font-size: 2em;
+  color: #444;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Orders Container */
+.orders-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Order Card */
+.order-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Person Name */
+.person-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Order Details */
+.order-details p {
+  margin: 8px 0;
+  font-size: 1em;
+}
+
+.order-details strong {
+  color: #333;
+}
+
+.order-details span {
+  font-weight: bold;
+}
+
+/* Status Styles */
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #ffffff;
+  margin: .5rem;
+}
+
+.status.delivered {
+  background-color: #28a745;
+}
+
+.status.pending {
+  background-color: #ffc107;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .order-card {
+    padding: 15px;
+  }
+
+  .person-name {
+    font-size: 1.3em;
+  }
+
+  .order-details p {
+    font-size: 0.9em;
+  }
+}

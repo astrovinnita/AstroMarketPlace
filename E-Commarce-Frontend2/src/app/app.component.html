@@ -1,0 +1,23 @@
+<mat-drawer-container class="drawer-container" autosize>
+    
+    <mat-drawer-content>
+        <app-progress-bar></app-progress-bar>
+        <app-snack-bar></app-snack-bar>
+        <app-top-navbar></app-top-navbar>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <app-bottom-navbar></app-bottom-navbar>
+    </mat-drawer-content>
+
+    @if (!isMobile) {
+        <mat-drawer #drawer class="sidenav" position="end" mode="side">
+        
+            <div class="mat-drawer-inner-content">
+                <router-outlet name="user"></router-outlet>
+            </div>
+            
+        </mat-drawer>
+    }
+    
+</mat-drawer-container>

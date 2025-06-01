@@ -1,0 +1,223 @@
+:host {
+  --completed: green;
+  --not-completed: #e0e0e0;
+  --background: #f9f9f9;
+  --tick-color: #fff;
+}
+
+.order-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  column-gap: .5rem;
+}
+
+.address-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.address-details p {
+  font-size: 1em;
+  color: #555;
+  margin: 0;
+}
+
+.address-details{
+  margin: 1rem 0px;
+}
+
+.address-details-name {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.search_input {
+  padding: .5rem;
+  width: 60vw;
+  outline: none;
+}
+
+.order-info-container, .shipping-address {
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+}
+
+.order-tracking-container, .address-section {
+  background-color: var(--background);
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90vw;
+}
+
+.order-header {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.order-id {
+  color: #4a6ff3;
+  font-weight: bold;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.progress-bar {
+  content: "";
+  position: absolute;
+  top: 17%;
+  left: 65%;
+  height: 4px;
+  background-color: var(--not-completed);
+  z-index: -1;
+  transform: translateY(-50%);
+  animation: fill-bar 2s ease forwards;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.icon-container {
+  position: relative;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--not-completed);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  animation: fade-in 2s ease forwards;
+}
+
+.arrival-info,
+.tracking-info {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.completed .circle {
+  background-color: var(--completed);
+}
+
+.completed-bar {
+  background-color: var(--completed);
+}
+
+.tick {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--tick-color);
+}
+
+.icon {
+  margin-top: 10px;
+}
+
+.icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.progress-step p {
+  font-size: 0.85em;
+  color: #333;
+  margin-top: 10px;
+}
+
+.progress-step.completed p {
+  font-weight: bold;
+}
+
+
+@keyframes fill-bar {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 26.5vw;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .progress {
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .progress-step .icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .order-header {
+    text-align: left;
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .progress-bar {
+    top: 117%;
+    left: 9px;
+    height: 40px;
+    width: .2rem;
+    animation: fill-bar-2 2s ease forwards;
+  }
+
+  .icon img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .icon {
+    margin: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .tick {
+    font-size: 10px;
+  }
+
+  @keyframes fill-bar-2 {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 40px;
+    }
+  }
+}

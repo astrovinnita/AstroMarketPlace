@@ -1,0 +1,77 @@
+@if(user){
+<div class="sidebar">
+  <!-- User Profile Section -->
+  <div class="user-profile">
+    <img src="../../../assets/Luffy.jpg" alt="User Profile" class="profile-img">
+    <div class="profile-details">
+      <h4>{{user.userName}}</h4>
+      <p>{{user.email}}</p>
+    </div>
+  </div>
+
+  <div class="user-details">
+    <h3>Personal Details</h3>
+    <div class="detail-card">
+      <form #userForm="ngForm" (ngSubmit)="updateUserInfo(userForm)">
+        <fieldset [disabled]="formDisable">
+          <label for="name">UserName</label>
+          <div class="input-group">
+            <input type="text" name="userName" [ngModel]="user.userName">
+          </div>
+          <label for="name">Email</label>
+          <div class="input-group">
+            <input type="email" name="email" [ngModel]="user.email">
+          </div>
+          <label for="name">Mobile</label>
+          <div class="input-group">
+            <input type="text" name="mobile" [ngModel]="user.mobile">
+          </div>
+        </fieldset>
+        
+        <div class="btns">
+          <button mat-stroked-button type="button" (click)="formDisable = !formDisable">Edit</button>
+          <button mat-stroked-button type="submit">Save</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+  <!-- Saved Addresses Section -->
+  <div class="saved-addresses">
+    <h3>Saved Addresses</h3>
+    @for (address of user.deliveryInformation; track $index) {
+    <div class="address-card">
+      <div class="address-header">
+        <p class="user-name">{{address?.firstName}} {{address?.lastName}}</p>
+        <p class="user-email">{{address?.emailAddress}}</p>
+        <p class="user-phone">{{address?.mobileNumber1}} {{address?.mobileNumber2}}</p>
+      </div>
+      <p class="address-text">{{address?.address1}}, {{address?.address2}}</p>
+      <p class="address-text">{{address?.city}}, {{address?.district}}, {{address?.state}} - {{address?.pinCode}}</p>
+      <div class="card-actions">
+        <span class="icon edit-icon" title="Edit" (click)="updateDeliveryInfo(address, 'Edit Address')">✏️</span>
+        <span class="icon delete-icon" title="Delete" (click)="deleteDeliveryInfo(address)">🗑️</span>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Add New Address Button -->
+  <button class="add-new-btn" mat-flat-button (click)="updateDeliveryInfo(undefined, 'Add Address')">➕ Add New Address</button>
+
+</div>
+
+
+
+}
+@else{
+<div class="sign_in">
+  <img src="../../../assets/Tablet login-cuate.svg">
+
+  <span>Please Sign In to your account</span>
+
+  <button mat-button routerLink="/signUp">Sign In</button>
+
+</div>
+}

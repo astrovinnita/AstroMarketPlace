@@ -1,0 +1,159 @@
+@if (products?.length > 0) {
+<div class="cart-container">
+    @for (product of products; track $index) {
+        @if(product?.productImages) {
+            <mat-card class="product-card">
+                <mat-card-header>
+                    <div class="img-qnt">
+                        <img [src]="img + product.productImages[0]" alt="">
+        
+                        <div class="quantity">
+                            <button class="quantity-btns" (click)="updateValue(product,'-')">
+                                <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b"
+                                        d="M20 12L4 12"></path>
+                                </svg>
+                            </button>
+                            <input type="number" #qtr [(ngModel)]="product.quantity" (ngModelChange)="onInputChange()">
+                            <button class="quantity-btns" (click)="updateValue(product,'+')">
+                                <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b"
+                                        d="M12 4V20M20 12H4"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+        
+                    <mat-card-title-group>
+                        <mat-card-title>{{product.productName}}</mat-card-title>
+                        <mat-card-subtitle class="card_description">{{product.productDescription}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{product?.productSellingPrice | currency:"INR"}} <span
+                                class="og_price">{{product?.productOriginalPrice | currency:"INR"}}</span> </mat-card-subtitle>
+                        <mat-card-subtitle>You Save <b [style.color]="'black'">{{(product?.productOriginalPrice -
+                                product?.productSellingPrice) | currency:"INR"}}</b> </mat-card-subtitle>
+                    </mat-card-title-group>
+        
+                </mat-card-header>
+        
+                <mat-divider></mat-divider>
+        
+                <div class="remove_btn">
+                    <button mat-button color="warn" (click)="removeFromCart(product)">Remove</button>
+                </div>
+            </mat-card>
+        }
+    }
+
+    <mat-card class="total-card">
+        <mat-card-header>
+            <mat-card-title>Price Details ({{totalQuantity}})</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="total-price">
+            <span> Total Product Price</span>
+            <span>{{totalPricce | currency:"INR"}}</span>
+        </mat-card-content>
+
+        <mat-card-content class="total-price" [style.color]="'green'">
+            <span>Shipping Charge</span>
+            <span>Free</span>
+        </mat-card-content>
+
+        <mat-card-content class="total-price">
+            <h2><span>Order Totel</span></h2>
+            <h2><span>{{totalPricce | currency:"INR"}}</span></h2>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="cart_bottom_btn">
+        <span>{{totalPricce | currency:"INR"}}</span>
+        <button mat-flat-button (click)="placeOrder()">Place Order</button>
+    </div>
+
+</div>
+}
+@else{
+    <div class="empty_cart">
+        <img src="../../../assets/31160.jpg" alt="">
+
+        <span>Your cart is empty</span>
+
+        <button mat-button (click)="startShoping()">Start Shoping</button>
+
+    </div>
+}
+
+<!-- <div class="cart-container">
+    <mat-card class="product-card">
+        <mat-card-header>
+                <div class="img-qnt">
+                    <img [src]="img + '01HVR1RQETQJ4E0GCXCTC2G5BB'" alt="">
+
+                    <div class="quantity">
+                        <button>
+                            <svg fill="none" viewBox="0 0 24 24" height="14" width="14"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b"
+                                    d="M20 12L4 12"></path>
+                            </svg>
+                        </button>
+                        <input type="number" (focusout)="onInputChange()">
+                        <button>
+                            <svg fill="none" viewBox="0 0 24 24" height="14" width="14"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b"
+                                    d="M12 4V20M20 12H4"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            <mat-card-title-group>
+                <mat-card-title>Product Name</mat-card-title>
+                <mat-card-subtitle class="card_description">Product Description</mat-card-subtitle>
+                <mat-card-subtitle>{{3000 | currency:"INR"}} <span
+                        class="og_price">{{4000 | currency:"INR"}}</span> </mat-card-subtitle>
+                <mat-card-subtitle>You Save <b [style.color]="'black'">{{(4000 -
+                        3000) | currency:"INR"}}</b> </mat-card-subtitle>
+            </mat-card-title-group>
+
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <div class="remove_btn" >
+            <button mat-button color="warn">Remove</button>
+        </div>
+    </mat-card>
+
+    <mat-card class="total-card">
+        <mat-card-header>
+            <mat-card-title>Price Details ({{23}})</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content class="total-price">
+            <span> Total Product Price</span>
+            <span>{{3000 | currency:"INR"}}</span>
+        </mat-card-content> 
+
+        <mat-card-content class="total-price">
+            <span>Shipping Charge</span>
+            <span>Free</span>
+        </mat-card-content>
+
+        <mat-card-content class="total-price">
+            <h2><span>Order Totel</span></h2>
+            <h2><span>{{3000 | currency:"INR"}}</span></h2>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="cart_bottom_btn">
+        <span>{{3000 | currency:"INR"}}</span>
+        <button mat-flat-button (click)="placeOrder()" routerLink="../orders">Place Order</button>
+    </div>
+
+</div> -->

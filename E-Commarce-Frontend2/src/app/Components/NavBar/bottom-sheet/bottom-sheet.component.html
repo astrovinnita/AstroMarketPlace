@@ -1,0 +1,25 @@
+@if(data.current != 'range'){
+    <mat-selection-list [multiple]="false" (selectionChange)="onSelectionChange($event)">
+
+        @for (val of data?.value; track $index) {
+            <mat-list-option [selected]="val == fillterForm.get('selected')?.value[data.current]" [value]="val">{{val}}</mat-list-option>
+        }
+
+    </mat-selection-list>
+}
+@else{
+    <mat-selection-list [multiple]="true" [(ngModel)]="fillterForm.get('selected')?.value[data.current]">
+
+        @for (val of data?.value; track $index) {
+            <mat-list-option [value]="val">{{val}}</mat-list-option>
+        }
+
+        <section class="button-section">
+
+            <button mat-button (click)="openLink(true)">Cancel</button>
+            <button mat-button (click)="apply()">Apply</button>
+        
+        </section>
+
+    </mat-selection-list>
+}

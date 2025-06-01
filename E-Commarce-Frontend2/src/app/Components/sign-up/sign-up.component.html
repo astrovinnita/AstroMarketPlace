@@ -1,0 +1,20 @@
+<div class="signIn-container">
+    <div class="signIn-form-card">
+        <form #signUpForm="ngForm" (ngSubmit)="signUp()" class="signIn-form">
+            @if (!sended) {
+                <p class="form-title">Welcome</p>
+            }
+            @else {
+                <div class="back-button">
+                    <button (click)="sended=!sended">beck</button>
+                </div>
+            }
+    
+            <input #email ngModel type="email" [hidden]="sended" id="email" name="email" placeholder="Email" >
+            <input #otp ngModel type="number" [hidden]="!sended" id="otp" name="otp" placeholder="OTP" >
+            <p class="error-message">{{errorMessage}}</p>
+
+            <button [disabled]="sended ? !otp?.value : !email?.value">{{ sended ? 'Sign Up' : 'Next'}}</button>
+        </form>
+    </div>
+</div>

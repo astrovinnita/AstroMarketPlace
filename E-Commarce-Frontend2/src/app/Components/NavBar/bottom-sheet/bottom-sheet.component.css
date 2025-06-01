@@ -1,0 +1,29 @@
+ ::ng-deep .mat-bottom-sheet-container{
+    border-top-left-radius: 2rem ;
+    border-top-right-radius: 2rem ;
+    padding: 0;
+    max-height: 60vh;
+}
+
+.button-section{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    bottom: 0rem;
+    position: sticky;
+    background: black;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+
+button{
+    width: 45%;
+    padding: 1.3rem;
+    background: wheat;
+}
+
+::ng-deep .mdc-list {
+    padding: 0 !important;
+}

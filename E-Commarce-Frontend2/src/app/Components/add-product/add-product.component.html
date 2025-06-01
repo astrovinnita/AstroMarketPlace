@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>Product Details</h2>
+    <form #addProductForm="ngForm" (ngSubmit)="submit(addProductForm)">
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" ngModel placeholder="Enter product name">
+        </div>
+
+        <div class="form-group">
+            <label for="productDescription">Product Description</label>
+            <textarea name="productDescription" rows="4" ngModel placeholder="Enter product description"></textarea>
+        </div>
+
+        <div class="grid">
+            <div class="form-group">
+                <label for="productOriginalPrice">Original Price</label>
+                <input type="number" name="productOriginalPrice" ngModel placeholder="Enter original price">
+            </div>
+            <div class="form-group">
+                <label for="productSellingPrice">Selling Price</label>
+                <input type="number" name="productSellingPrice" ngModel placeholder="Enter selling price">
+            </div>
+            <div class="form-group">
+                <label for="productQuantity">Quantity</label>
+                <input type="number" name="productQuantity" ngModel placeholder="Enter product quantity">
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="form-group">
+                <label for="productColor">Product Color</label>
+                <select type="text" name="productColor" ngModel placeholder="Enter product color">
+                    @for (color of colors; track $index) {
+                        <option value="{{color}}">{{color}}</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group category-container">
+                <div style="flex: 1;">
+                    <label for="productCategory">Product Category</label>
+                    <select name="productCategory" ngModel>
+                        @for (category of productCategories; track $index) {
+                            <option value="{{category}}">{{category}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Upload Product Images</label>
+            <div class="file-input" onclick="document.getElementById('productImages').click();">
+                <input type="file" id="productImages" name="productImages" (change)="onImageChange($event)" accept="image/*" multiple>
+                <p>Click to upload images</p>
+            </div>
+            <div id="imagePreview" class="image-preview"></div>
+        </div>
+        
+        <button style="background-color: #007bff; color: white; font-weight: bold;">Submit Product</button>
+    </form>
+</div>

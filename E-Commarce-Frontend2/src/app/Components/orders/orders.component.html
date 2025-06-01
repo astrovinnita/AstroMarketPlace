@@ -1,0 +1,100 @@
+<div class="order-container">
+  <input class="search_input" type="text" #orderId>
+
+  <button mat-stroked-button (click)="getOrderInfo(orderId.value)">search</button>
+</div>
+@if(orders) {
+
+<div class="shipping-address">
+  <div class="address-section">
+    <h2>Shipping Address</h2>
+    <span class="address-details-name"><strong>{{orders?.deliveryInfo?.firstName}} {{orders?.deliveryInfo?.lastName}}</strong></span>
+    <div class="address-details">
+      <p>{{orders?.deliveryInfo?.address1}}</p>
+      <p>{{orders?.deliveryInfo?.address2}}</p>
+      <p>{{orders?.deliveryInfo?.city}}, {{orders?.deliveryInfo?.district}}, {{orders?.deliveryInfo?.state}} - {{orders?.deliveryInfo?.pinCode}}</p>
+    </div>
+    <span>{{orders?.deliveryInfo?.mobileNumber1}}, {{orders?.deliveryInfo?.emailAddress}}</span>
+  </div>
+</div>
+
+<div class="order-info-container">
+
+  <div class="order-tracking-container">
+
+    <div class="order-header">
+      <p>ORDER <span class="order-id">#{{orders?.orderId}}</span></p>
+      <p class="arrival-info">Orderd Date: <span>{{orders?.createdDate | date}}</span></p>
+      <!-- <p class="tracking-info">USPS <span>234094567242423422898</span></p> -->
+    </div>
+
+    <div class="progress">
+      <div
+        [class]="orders?.deliveryStatus == 'OUTFORDELIVERY' || orders?.deliveryStatus == 'DELIVERED' || orders?.deliveryStatus == 'INTRANSIT' ?  'progress-step completed' : 'progress-step'">
+        <div class="icon-container">
+          <div class="circle">
+            <span class="tick">✔</span>
+          </div>
+          <div class="icon">
+            <img src="https://i.imgur.com/9nnc9Et.png" alt="Order Processed">
+          </div>
+          <p>Order Processed</p>
+        </div>
+        <div
+          [class]="orders?.deliveryStatus == 'OUTFORDELIVERY' || orders?.deliveryStatus == 'DELIVERED' || orders?.deliveryStatus == 'INTRANSIT' ?  'progress-bar completed-bar' : 'progress-bar'">
+        </div>
+      </div>
+
+
+      <div
+        [class]="orders?.deliveryStatus == 'OUTFORDELIVERY' || orders?.deliveryStatus == 'DELIVERED' || orders?.deliveryStatus == 'INTRANSIT' ?  'progress-step completed' : 'progress-step'">
+        <div class="icon-container">
+          <div class="circle">
+            <span class="tick">✔</span>
+          </div>
+          <div class="icon">
+            <img src="https://i.imgur.com/u1AzR7w.png" alt="Order Shipped">
+          </div>
+          <p>Order Shipped</p>
+        </div>
+        <div
+          [class]="orders?.deliveryStatus == 'OUTFORDELIVERY' || orders?.deliveryStatus == 'DELIVERED' ?  'progress-bar completed-bar' : 'progress-bar'">
+        </div>
+      </div>
+
+
+      <div
+        [class]="orders?.deliveryStatus == 'OUTFORDELIVERY' || orders?.deliveryStatus == 'DELIVERED' ?  'progress-step completed' : 'progress-step'">
+        <!-- <div class="progress-step completed"> -->
+        <div class="icon-container">
+          <div class="circle">
+            <span class="tick">✔</span>
+          </div>
+          <div class="icon">
+            <img src="https://i.imgur.com/TkPm63y.png" alt="Order En Route">
+          </div>
+          <p>Order En Route</p>
+        </div>
+        <div [class]="orders?.deliveryStatus == 'DELIVERED' ?  'progress-bar completed-bar' : 'progress-bar'"></div>
+      </div>
+
+
+      <div [class]="orders?.deliveryStatus == 'DELIVERED' ?  'progress-step completed' : 'progress-step'">
+        <div class="icon-container">
+          <div class="circle">
+            <span class="tick">✔</span>
+          </div>
+          <div class="icon">
+            <img src="https://i.imgur.com/HdsziHP.png" alt="Order Arrived">
+          </div>
+          <p>Order Arrived</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+}
+@else {
+  <p>No Order Found</p>
+}

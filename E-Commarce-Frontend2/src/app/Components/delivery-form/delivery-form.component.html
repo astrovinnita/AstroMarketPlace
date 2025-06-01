@@ -1,0 +1,119 @@
+<div class="order-form-container">
+
+    @if(deliveryInformation){
+    <div class="saved-addresses">
+        <h3>Saved Addresses</h3>
+        @for (address of deliveryInformation; track $index) {
+        <div class="address-card" (click)="setFormValue(address)">
+            <div class="address-header">
+                <p class="user-name">{{address?.firstName}} {{address?.lastName}}</p>
+                <p class="user-email">{{address?.emailAddress}}</p>
+                <p class="user-phone">{{address?.mobileNumber1}} {{address?.mobileNumber2}}</p>
+            </div>
+            <p class="address-text">{{address?.address1}}, {{address?.address2}}</p>
+            <p class="address-text">{{address?.city}}, {{address?.district}}, {{address?.state}} - {{address?.pinCode}}
+            </p>
+        </div>
+        }
+    </div>
+    <mat-divider></mat-divider>
+    }
+
+    <form [formGroup]="orderAddress" class="order-form" (ngSubmit)="makePayment()">
+        <div class="two-input">
+            <mat-form-field appearance="outline">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="two-input">
+            <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <span matTextPrefix>+91</span>
+                <input type="text" matInput formControlName="mobileNumber1">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Phone (Optional)</mat-label>
+                <span matTextPrefix>+91</span>
+                <input type="text" matInput formControlName="mobileNumber2">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input type="text" matInput formControlName="emailAddress">
+            <!-- <span matTextSuffix>{{"@gmail.com"}}</span> -->
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <ng-container formGroupName="address">
+            <div class="order-address">
+                <mat-form-field appearance="outline">
+                    <mat-label>Address 1</mat-label>
+                    <textarea matInput formControlName="address1"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Address 2 (optional)</mat-label>
+                    <textarea matInput formControlName="address2"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="order-address-city">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="state"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto>
+                        @for (state of filteredOptions | async; track state) {
+                        <mat-option [value]="state">{{state}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>District</mat-label>
+                    <input matInput formControlName="district">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City/Town/Village</mat-label>
+                    <input matInput formControlName="city">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Pin Code</mat-label>
+                    <input type="number" matInput formControlName="pinCode">
+                </mat-form-field>
+
+            </div>
+
+        </ng-container>
+
+        <button hidden #submit></button>
+
+    </form>
+
+    <div class="btns">
+        @if (isCheckout) {
+        <span>{{totalPrice |async | currency:"INR"}}</span>
+        <button type="submit" (click)="submit.click()" color="primary" class="payment-btns" mat-raised-button>Pay
+            Now<mat-icon>payment</mat-icon></button>
+        }
+        @else {
+        <button type="submit" (click)="submit.click()" color="primary" class="full-btn"
+            mat-raised-button>{{buttonName}}</button>
+        }
+    </div>
+</div>

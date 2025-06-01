@@ -1,0 +1,211 @@
+.cart-container {
+    display: flex;
+    row-gap: .5rem;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-top: .5rem;
+}
+
+mat-card{
+    border-radius: .8rem;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    width: 50% !important;
+}
+
+.card_description {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* Limit the number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: small;
+}
+
+.remove_btn{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.remove_btn button{
+    width: 30%;
+    border-radius: .8rem;
+}
+
+.product-card mat-divider{
+    width: 100%;
+    margin-top: .4rem;
+}
+
+.quantity-span {
+    margin: 1rem;
+    margin-right: .3rem;
+}
+
+mat-card-title-group {
+    margin-left: .5rem;
+}
+
+
+.og_price {
+    text-decoration: line-through;
+    font-weight: 300;
+    margin-left: .6rem;
+}
+
+.dilog-btn {
+    width: 45%;
+}
+
+.total-card{
+    margin-bottom: 5rem;
+}
+
+.quantity-btns{
+    cursor: pointer;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    margin: .3rem;
+}
+
+mat-divider {
+    width: 98%;
+    margin: auto;
+}
+
+.cart_bottom_btn {
+    bottom: 0rem;
+    display: flex;
+    position: fixed;
+    width: 50%;
+    background: darkgrey;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+::ng-deep .mat-bottom-sheet-container{
+    border-top-left-radius: 2rem !important ;
+    border-top-right-radius: 2rem !important;
+    padding: 0 !important;
+    max-height: 60vh !important;
+    width: 90vw;
+}
+
+.cart_bottom_btn button {
+    width: 50%;
+    background: wheat;
+    color: black;
+    height: 3rem;
+    font-size: large;
+    margin-right: .5rem;
+    justify-self: end;
+}
+
+.cart_bottom_btn span{
+    margin-left: 1rem;
+    font-size: medium;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.img-qnt img {
+    margin-left: 1rem;
+    width: 4rem;
+    height: 5rem;
+    overflow: hidden;
+    object-fit: cover;
+}
+.quantity {
+    height: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 7px;
+    filter: drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+}
+
+ .quantity input {
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2px;
+    font-size: 15px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    color: #47484b;
+}
+
+ .quantity button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    padding-bottom: 2px;
+}
+
+::ng-deep .mat-mdc-card-content:last-child {
+    padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-mdc-card-content{
+    padding-left: .2rem !important;
+}
+
+::ng-deep .mat-mdc-card-header {
+    padding-left: .3rem !important;
+}
+
+.empty_cart{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.empty_cart img{
+    height: 11rem;
+    width: 15rem;
+    object-fit:cover;
+    overflow: hidden;
+}
+
+.empty_cart button{
+    background: palevioletred;
+    width: 12rem;
+}
+.empty_cart span{
+    font-weight: 700;
+    font-family: system-ui;
+}
+
+@media (max-width:700px) {
+   
+    .cart_bottom_btn{
+        bottom: 3rem;
+    }
+
+    mat-card{
+        width: 98% !important;
+    }
+
+    .cart_bottom_btn{
+        width: 100%;
+    }
+  }

@@ -1,0 +1,61 @@
+:host{
+
+    --warning-border : #F7C752;
+    --warning-title : #755118;
+
+    --error-border : #f75252;
+    --error-title   : #751818;
+}
+
+
+.snakbar-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.snackbar {
+    font-family: system-ui;
+    width: 320px;
+    padding: 12px;
+    display: flex;
+    top: 1rem;
+    position: fixed;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-left: 4px solid #F7C752;
+    border-radius: .3rem;
+    box-shadow: 0px 0px 10px -3px #111;
+    z-index: 10;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    transform: translateY(-2px);
+    margin-right: 8px;
+  }
+  
+  .title {
+    font-weight: 500;
+    font-size: 14px;
+    color: #755118;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: small;
+  }
+  
+  .close {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  
+  .close mat-icon {
+    color: #751818;
+  }

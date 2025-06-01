@@ -1,0 +1,27 @@
+<div class="orders-container">
+	<h1>📋 Your Orders</h1>
+	
+    @if (orders?.length > 0) {
+        <ng-container>
+            @for (order of orders; track $index) {
+    
+                <div class="order-card" (click)="getOrderInfo(order?.orderId)">
+                    <div class="person-name">
+                        <i class="fas fa-user"></i> {{order?.deliveryInfo.firstName}} {{order?.deliveryInfo.lastName}}
+                    </div>
+                    <div class="order-details">
+                        <span class="order-date"><i class="fas fa-calendar-alt"></i> Ordered on: {{order?.createdDate | date}}</span>
+                        <p><strong>Order ID:</strong>#{{order?.orderId}}</p>
+                        <p><strong>Product:</strong> Wireless Headphones</p>
+                        <p><strong>Status:</strong> <span class="status {{order?.deliveryStatus}}">{{order?.deliveryStatus}}</span></p>
+                    </div>
+                </div>
+        
+            }
+        </ng-container>
+    }
+    @else {
+        <h1>No Orders</h1>
+    }
+
+</div>

@@ -1,0 +1,39 @@
+nav{
+    display: flex;
+    top: 3.5rem;
+    position: fixed;
+    width: 100vw;
+    z-index: 5;
+    justify-content: center;
+  }
+  
+  .nav-container{
+    border-radius: .5rem;
+    display: flex;
+    width: 99vw;
+    height: 3rem;
+    background: black;
+    color: antiquewhite;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .nav-container button{
+    color: antiquewhite;
+  }
+  
+  
+  
+  @media (min-width:700px) {
+    nav{
+        display: none;
+        /* bottom: 3rem;
+        justify-content: center; */
+    }
+  
+    /* .nav-container{
+        width: 30%;
+        border-radius: 1rem;
+    } */
+  
+  }

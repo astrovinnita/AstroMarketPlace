@@ -1,0 +1,272 @@
+.sign_in{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.sign_in img{
+    height: 11rem;
+    width: 15rem;
+    object-fit:cover;
+    overflow: hidden;
+}
+
+.sign_in button{
+    background: rgb(65, 64, 64);
+    color: white;
+    width: 12rem;
+}
+.sign_in span{
+    font-weight: 700;
+    font-family: system-ui;
+}
+
+.main-container{
+    height: 90vh;
+    width: 100vw;
+    background: black;
+}
+
+.signIn-button:hover{
+    background: #0d6dfd5d;
+}
+
+.userNameHeader{
+    letter-spacing: 5px;
+}
+
+.profile-pic{
+    width: 40px;
+    height: 40px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+  width: 300px;
+}
+
+.drower-BackGroud {
+
+    /* background: url("\src\assets\photo_2023-07-23_13-16-51.jpg"); */
+
+    /* background-color: transparent; */
+
+    background-position-x: right;
+
+    background-size: cover;
+ 
+}
+
+/* ------------------------------------------- */
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  height: 100%;
+  padding: 20px 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+/* User Profile Section */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-direction: column;
+  row-gap:.5rem;
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* margin-right: 15px; */
+}
+
+.profile-details h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  justify-content: center;
+  display: flex
+
+}
+
+.profile-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Personal Details Section */
+.user-details {
+  margin-bottom: 20px;
+}
+
+.detail-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+  justify-content: center;
+  display: flex;
+}
+
+label {
+  font-size: 14px;
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 40px 10px 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.input-group input:disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.input-group .icon:hover {
+  color: #0056b3;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; 
+  width: 100%; 
+}
+
+.btns button{
+  width: auto;
+}
+
+/* Saved Addresses Section */
+.saved-addresses {
+  margin-bottom: 20px;
+}
+
+.address-card {
+  background-color: #f9f9fc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.address-header {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.address-header .user-name {
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+
+.address-header .user-email,
+.address-header .user-phone {
+  font-size: 14px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.address-text {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.edit-icon:hover {
+  color: #007bff;
+}
+
+.delete-icon:hover {
+  color: #dc3545;
+}
+
+.icon:hover{
+cursor: pointer;
+}
+
+/* Add New Button */
+.add-new-btn {
+  display: block;
+  width: 100%;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.add-new-btn:hover {
+  background-color: #218838;
+}

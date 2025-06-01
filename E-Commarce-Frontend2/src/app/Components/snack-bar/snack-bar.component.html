@@ -1,0 +1,16 @@
+@if (type) {
+    <div class="snakbar-container">
+        <div class="snackbar" [style.border-color]="snackUI[type.ui].color">
+            <div class="icon">
+               <mat-icon [style.color]="snackUI[type.ui].color">{{snackUI[type.ui].icon}}</mat-icon>
+            </div>
+    
+            <div class="title" [style.color]="snackUI[type.ui].color">{{type.message}}</div>
+    
+            <div class="close">
+                <mat-icon (click)="closeSnackBar()">close</mat-icon>
+            </div>
+    
+        </div>
+    </div>
+}

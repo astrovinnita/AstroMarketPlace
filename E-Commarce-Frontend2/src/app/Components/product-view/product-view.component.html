@@ -1,0 +1,40 @@
+@if (product) {
+<div class="product-details">
+
+    <section class="img_container">
+        <div class="slider-wrapper">
+            <div class="slider" #sliderContainer (scroll)="onScroll()">
+
+                @for (imgid of product?.productImages; track $index) {
+                <img  class="product-image" [src]="img+imgid" />
+                }
+
+                <span class="img_index">{{currentIndex}}/{{product?.productImages?.length}}</span>
+            </div>
+        </div>
+    </section>
+
+
+    <div>
+        <div class="product-info">
+            <h2 class="product-title">{{product?.productName}}</h2>
+            <p class="product-description">{{product?.productDescription}}</p>
+            <span class="selling_price">{{product?.productSellingPrice | currency:"INR"}} <span
+                    class="og_price">{{product?.productOriginalPrice | currency:"INR"}}</span> <span
+                    [style.color]="'green'">{{(product?.productOriginalPrice-product?.productSellingPrice)/product?.productOriginalPrice
+                    | percent}} OFF</span></span>
+            <p [style.color]="'green'">Free Delivery</p>
+
+        </div>
+
+        <div class="btns">
+            <button class="cart_btn" mat-button (click)="addToCart(product)">Add To Cart
+                <mat-icon>add_shopping_cart</mat-icon> </button>
+            <button class="buy_btn" mat-button (click)="placeOrder(product)" [routerLink]="'/checkout'">Buy</button>
+        </div>
+    </div>
+
+
+</div>
+}
+

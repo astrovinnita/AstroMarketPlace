@@ -1,0 +1,34 @@
+<app-fillter-nav-bar></app-fillter-nav-bar>
+
+<div class="product-cards">
+
+    @for (product of products; track $index) {
+    <article class="product-card" [routerLink]="['/products/',product.productId]" monitor>
+        <div class="card__preview">
+
+            <img [ngSrc]="imgURL + product.productImages" fill>
+
+            <div class="card_hart">
+                <button class="card__btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card__content">
+            <span class="card__title">{{product.productName | uppercase}}</span>
+            <span class="card_price">₹{{product.productSellingPrice | number}}  
+                <span class="card_og_price">₹{{product.productOriginalPrice | number}}</span>
+                <span [style.color]="'green'">
+                    {{(product.productOriginalPrice-product.productSellingPrice)/product.productOriginalPrice | percent}}OFF</span>
+                </span>
+        </div>
+    </article>
+    }
+
+</div>

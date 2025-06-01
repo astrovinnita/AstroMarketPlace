@@ -1,0 +1,96 @@
+.signIn-container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #1c1c1f; */
+}
+
+.signIn-form input {
+  background: rgb(0 0 0 / 15%);
+  color: rgb(0, 0, 0);
+}
+
+.signIn-form-card {
+  width: 20rem;
+  /* border-radius: .5rem; */
+  /* background: rgba(255, 255, 255, 0.496);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); */
+}
+
+.signIn-form {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.signIn-form input {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-radius: .3rem;
+  font-size: 15px;
+  letter-spacing: .1rem;
+  font-family: system-ui;
+
+}
+
+.signIn-form button {
+  padding: .8rem;
+  border: none;
+  border-radius: .3rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: .1rem;
+  font-family: system-ui;
+  background: yellow;
+  color: black;
+}
+
+.signIn-form button:disabled{
+  background: rgba(255, 255, 0, 0.608);
+}
+
+.error-message{
+  color: red;
+  margin-left: .5rem;
+  font-size: 12px;
+  font-family: system-ui;
+  letter-spacing: .1rem;
+  margin-top: 0;
+  
+}
+
+.back-button button{
+  margin-bottom: 1rem;
+  padding: .4rem;
+}
+
+.back-button{
+  border-radius: 2rem;
+}
+@media (max-width:480px) {
+
+  .signIn-container {
+      align-items: start;
+  }
+
+  .signIn-form-card {
+      color: white;
+      border-radius: 0;
+      background: transparent;
+      border-bottom-left-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+  }
+
+  .signIn-form .form-title{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+  }
+
+}
