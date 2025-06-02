@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { RestURL } from '../../Constant/RestURL';
 import { StorageService } from '../storage.service';
-import { Apollo, gql } from 'apollo-angular';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { map } from 'rxjs';
 })
 export class ApiService {
 
-  constructor(private httpServices: HttpService, private apollo:Apollo) { }
+  constructor(private httpServices: HttpService) { }
 
   private storage = inject(StorageService)
 
