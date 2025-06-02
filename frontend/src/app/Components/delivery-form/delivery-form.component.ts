@@ -14,6 +14,7 @@ import { SnackBarService } from '../../Common/Services/Ui/snack-bar.service';
 import {Router } from '@angular/router';
 
 declare var Razorpay: any
+
 @Component({
   selector: 'app-delivery-form',
   standalone: true,

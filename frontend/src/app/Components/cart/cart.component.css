@@ -37,24 +37,14 @@ mat-card{
     margin-top: .4rem;
 }
 
-.quantity-span {
-    margin: 1rem;
-    margin-right: .3rem;
-}
-
 mat-card-title-group {
     margin-left: .5rem;
 }
-
 
 .og_price {
     text-decoration: line-through;
     font-weight: 300;
     margin-left: .6rem;
-}
-
-.dilog-btn {
-    width: 45%;
 }
 
 .total-card{

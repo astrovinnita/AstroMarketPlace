@@ -23,49 +23,6 @@
     font-family: system-ui;
 }
 
-.main-container{
-    height: 90vh;
-    width: 100vw;
-    background: black;
-}
-
-.signIn-button:hover{
-    background: #0d6dfd5d;
-}
-
-.userNameHeader{
-    letter-spacing: 5px;
-}
-
-.profile-pic{
-    width: 40px;
-    height: 40px;
-}
-
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
-  width: 300px;
-}
-
-.drower-BackGroud {
-
-    /* background: url("\src\assets\photo_2023-07-23_13-16-51.jpg"); */
-
-    /* background-color: transparent; */
-
-    background-position-x: right;
-
-    background-size: cover;
- 
-}
-
 /* ------------------------------------------- */
 
 /* Sidebar Styles */
