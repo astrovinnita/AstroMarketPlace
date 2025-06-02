@@ -17,6 +17,7 @@ export class HttpService {
     this.snackBar.startProgressBar()
 
     return this.http.post(url, data, { headers, responseType: responseType }).pipe(catchError((err: any) => {
+
       if (err?.status == 0) err.error.message = this.commonMessage
       
       err.error = JSON.parse(err?.error)

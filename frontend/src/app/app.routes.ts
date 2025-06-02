@@ -7,7 +7,6 @@ import { DeliveryFormComponent } from './Components/delivery-form/delivery-form.
 import { UserAccountComponent } from './Components/user-account/user-account.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
-import { DemoComponent } from './Components/demo/demo.component';
 import { OrdersListComponent } from './Components/orders-list/orders-list.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 
@@ -27,7 +26,6 @@ export const routes: Routes = [
     {path:"orders", component:OrdersListComponent},
     {path:"signUp", component:SignUpComponent},
     {path:'orders', component:OrdersListComponent},
-    {path:"demo", component:DemoComponent},
     {path:"addProduct", component:AddProductComponent},
     
 

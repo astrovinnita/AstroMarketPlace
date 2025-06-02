@@ -24,7 +24,7 @@ export class TopNavbarComponent implements OnInit {
 
   snackBar = inject(SnackBarService)
   storage = inject(StorageService)
-  user: any
+  isadd = false
   quantity: any = 0
   placeHolder = "search products"
 
@@ -36,6 +36,8 @@ export class TopNavbarComponent implements OnInit {
 
   async getCartProducts() {
     this.storage.getUser().subscribe((res: any): void => {
+      this.isadd = res.userRole == "SELLER"
+
       if (res?.cart != null) {
         let cartProduct: any = {}
 

@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from "@angular/material/select";
 import { ApiService } from '../../Common/Services/Backend/api.service';
 import { SnackBarService } from '../../Common/Services/Ui/snack-bar.service';
+import { StorageService } from '../../Common/Services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -21,12 +23,19 @@ export class AddProductComponent {
 
   productCategories:any
   colors = ['red', 'green', 'black', 'white']
-
-
+  
+  
+  private storage:any = inject(StorageService)
   private apiServices = inject(ApiService)
   private snackBar = inject(SnackBarService)
+  private rout = inject(Router)
 
   ngOnInit() {
+    
+    this.storage.getUser().subscribe((res: any) => {
+      if (res.userRole != "SELLER") this.rout.navigate(['home'])
+    })
+
     this.getCetagorise()
   }
 
@@ -82,7 +91,7 @@ export class AddProductComponent {
   }
 
   submit(addProductForm:any){
-    let val = addProductForm.value
+    let val = addProductForm.value    
     val.productCategory = {'productCategoryName':addProductForm.value.productCategory}    
     this.apiServices.addProduct(this.files, val).subscribe( () => this.snackBar.successSnackBar("Product Added Succesfully"))
   }
